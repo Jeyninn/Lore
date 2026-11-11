@@ -1,0 +1,205 @@
+
+<div class="questionnaire-page">
+
+  @if (loading) {
+    <div class="loading-state">
+      <div class="loader"></div>
+      <p>Loading your questions...</p>
+    </div>
+  }
+
+  @if (errorMessage && !loading) {
+    <div class="error-message">
+      {{ errorMessage }}
+      <button (click)="loadQuestions()">TRY AGAIN</button>
+    </div>
+  }
+
+  @if (!loading && questions.length && currentQuestion && !showWritingStep) {
+
+    <div class="questionnaire-header">
+      <p class="eyebrow">LORE.exe // IDENTITY INITIALIZATION</p>
+      <h1>Let's decode <span>you.</span></h1>
+      <p>There are no wrong answers. Just your version of the story.</p>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-info">
+        <span>QUESTION {{ currentIndex + 1 }} / {{ questions.length }}</span>
+        <span>{{ progress | number:'1.0-0' }}% COMPLETE</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+      </div>
+    </div>
+
+    <section class="question-card">
+
+      <div class="question-meta">
+        <span>{{ currentQuestion.category | uppercase }}</span>
+
+        <span class="question-type">
+          {{ currentQuestion.type === 'multi_select'
+            ? 'SELECT UP TO ' + (currentQuestion.maxSelections ?? 3)
+            : 'SELECT ONE' }}
+        </span>
+      </div>
+
+      <h2>{{ currentQuestion.prompt }}</h2>
+
+      @if (currentQuestion.type === 'multi_select') {
+        <p class="instruction">Choose the options that resonate with you.</p>
+      } @else {
+        <p class="instruction">Choose the option that feels most like you.</p>
+      }
+
+      <div class="options-grid">
+
+        @for (option of currentQuestion.options; track option.id) {
+
+          <button
+            type="button"
+            class="option-card"
+            [class.selected]="isSelected(option.id)"
+            (click)="selectOption(option.id)">
+
+            <span class="option-indicator">
+              {{ isSelected(option.id) ? '✓' : '+' }}
+            </span>
+
+            <span>{{ option.label }}</span>
+
+          </button>
+
+        }
+
+      </div>
+
+      @if (!canContinue()) {
+        <p class="validation-message">
+          Select at least {{ currentQuestion.minSelections ?? 1 }}
+          option(s) to continue.
+        </p>
+      }
+
+      @if (errorMessage && !submitting) {
+        <p class="validation-message">{{ errorMessage }}</p>
+      }
+
+      <div class="question-actions">
+
+        <button
+          class="back-btn"
+          type="button"
+          [disabled]="currentIndex === 0 || submitting"
+          (click)="previousQuestion()">
+          ← BACK
+        </button>
+
+        <button
+          class="next-btn"
+          type="button"
+          [disabled]="!canContinue() || submitting"
+          (click)="nextQuestion()">
+
+          @if (submitting) {
+            SAVING YOUR ANSWERS...
+          } @else if (isLastQuestion) {
+            SUBMIT & DECODE ↗
+          } @else {
+            NEXT QUESTION →
+          }
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <p class="footer-note">
+      YOUR RESPONSES SHAPE YOUR DIGITAL IDENTITY.
+    </p>
+  }
+
+
+@if (!loading && showWritingStep) {
+  <section class="writing-step">
+
+    <p class="eyebrow">LORE.exe // FINAL LAYER</p>
+
+    <h1>Beyond the <span>answers.</span></h1>
+
+    <p class="writing-intro">
+      Your choices tell us what you like.
+      Your words can reveal how you express your ideas.
+    </p>
+
+    <div class="writing-card">
+
+      <label for="writingSample">
+        YOUR DIGITAL FOOTPRINT
+      </label>
+
+      <p>
+        Tell us about your interests, imagination, favourite things,
+        creative ideas, or how you see the world.
+      </p>
+
+      <textarea
+        id="writingSample"
+        name="writingSample"
+        rows="7"
+        maxlength="2000"
+        [value]="writingSample"
+        (input)="writingSample = $any($event.target).value"
+        placeholder="I've always been curious about... I love exploring new ideas because...">
+      </textarea>
+
+      <div class="writing-count">
+        {{ writingSample.length }} / 2000 characters
+      </div>
+
+      <label class="consent-label">
+        <input
+          type="checkbox"
+          [checked]="writingConsent"
+          (change)="writingConsent = $any($event.target).checked">
+        I consent to having this writing analysed for semantic themes.
+      </label>
+
+      <p class="writing-note">
+        Optional. Without consent, your writing will not be analysed.
+      </p>
+
+      @if (writingError) {
+        <p class="validation-message">{{ writingError }}</p>
+      }
+
+      <div class="question-actions">
+
+        <button
+          type="button"
+          class="back-btn"
+          (click)="backToQuestions()">
+          ← BACK TO QUESTIONS
+        </button>
+
+        <button
+          type="button"
+          class="next-btn"
+          [disabled]="submitting"
+          (click)="submitAnswers()">
+          @if (submitting) {
+            SAVING...
+          } @else {
+            GENERATE MY LORE ↗
+          }
+        </button>
+
+      </div>
+    </div>
+  </section>
+}
+
+</div>

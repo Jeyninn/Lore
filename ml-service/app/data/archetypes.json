@@ -1,0 +1,303 @@
+
+{
+  "catalog_id": "lore-archetypes",
+  "version": 1,
+  "feature_schema_version": 1,
+  "score_range": {
+    "minimum": 0,
+    "maximum": 100
+  },
+    "matching": {
+    "method": "weighted_cosine_similarity",
+    "top_k": 2,
+    "minimum_comparable_dimensions": 4,
+    "dimension_weights": {
+      "social_energy": 1.0,
+      "curiosity": 1.0,
+      "creativity": 1.0,
+      "spontaneity": 1.0,
+      "reflection": 1.0,
+      "analytical_style": 1.0,
+      "expressiveness": 1.0,
+      "exploration": 1.0
+    }
+  },
+  "archetypes": [
+    {
+      "id": "lore_keeper",
+      "name": "The Lore Keeper",
+      "tagline": "Nothing interesting is ever forgotten.",
+      "description": "A collector of details, memories and stories who enjoys finding meaning in the things others overlook.",
+      "prototype": {
+        "social_energy": 35,
+        "curiosity": 85,
+        "creativity": 65,
+        "spontaneity": 30,
+        "reflection": 95,
+        "analytical_style": 80,
+        "expressiveness": 55,
+        "exploration": 55
+      },
+      "visual": {
+        "primary_color": "#293B73",
+        "secondary_color": "#A8B8D8",
+        "aesthetic": "digital_archive",
+        "motifs": ["old_files", "star_maps", "memory_fragments"]
+      },
+      "keywords": ["memory", "curiosity", "observation", "nostalgia"]
+    },
+    {
+      "id": "chaos_architect",
+      "name": "The Chaos Architect",
+      "tagline": "Turning random events into legendary stories.",
+      "description": "A spontaneous experimenter who finds possibilities in unexpected situations and enjoys making things happen.",
+      "prototype": {
+        "social_energy": 75,
+        "curiosity": 75,
+        "creativity": 90,
+        "spontaneity": 100,
+        "reflection": 35,
+        "analytical_style": 45,
+        "expressiveness": 85,
+        "exploration": 95
+      },
+      "visual": {
+        "primary_color": "#8B5CF6",
+        "secondary_color": "#FF4FD8",
+        "aesthetic": "glitch_neon",
+        "motifs": ["glitch_effects", "electric_shapes", "chaotic_grids"]
+      },
+      "keywords": ["spontaneous", "creative", "adventurous", "unpredictable"]
+    },
+    {
+      "id": "silent_observer",
+      "name": "The Silent Observer",
+      "tagline": "Noticing everything. Revealing selectively.",
+      "description": "An observant and reflective presence who prefers to understand a situation before stepping into it.",
+      "prototype": {
+        "social_energy": 15,
+        "curiosity": 75,
+        "creativity": 55,
+        "spontaneity": 20,
+        "reflection": 95,
+        "analytical_style": 95,
+        "expressiveness": 20,
+        "exploration": 40
+      },
+      "visual": {
+        "primary_color": "#202431",
+        "secondary_color": "#AEB7C7",
+        "aesthetic": "monochrome_noir",
+        "motifs": ["silver_lines", "shadow_shapes", "minimal_interfaces"]
+      },
+      "keywords": ["observant", "reflective", "analytical", "reserved"]
+    },
+    {
+      "id": "dreamcore_thinker",
+      "name": "The Dreamcore Thinker",
+      "tagline": "Half in reality, half in another universe.",
+      "description": "An imaginative thinker who enjoys possibilities, abstract connections and ideas that lead somewhere unexpected.",
+      "prototype": {
+        "social_energy": 35,
+        "curiosity": 90,
+        "creativity": 100,
+        "spontaneity": 55,
+        "reflection": 85,
+        "analytical_style": 55,
+        "expressiveness": 65,
+        "exploration": 75
+      },
+      "visual": {
+        "primary_color": "#A78BFA",
+        "secondary_color": "#D8C9FF",
+        "aesthetic": "surreal_dreamscape",
+        "motifs": ["floating_objects", "soft_glows", "impossible_landscapes"]
+      },
+      "keywords": ["imagination", "abstract", "dreamy", "creative"]
+    },
+    {
+      "id": "digital_nomad",
+      "name": "The Digital Nomad",
+      "tagline": "Always exploring a new corner of the universe.",
+      "description": "An explorer of ideas and experiences who enjoys discovering unfamiliar interests, places and possibilities.",
+      "prototype": {
+        "social_energy": 60,
+        "curiosity": 95,
+        "creativity": 65,
+        "spontaneity": 85,
+        "reflection": 45,
+        "analytical_style": 55,
+        "expressiveness": 65,
+        "exploration": 100
+      },
+      "visual": {
+        "primary_color": "#06B6D4",
+        "secondary_color": "#A5F3FC",
+        "aesthetic": "chrome_cyber",
+        "motifs": ["digital_maps", "coordinates", "chrome_surfaces"]
+      },
+      "keywords": ["exploration", "discovery", "curiosity", "adaptability"]
+    },
+    {
+      "id": "main_character",
+      "name": "The Main Character",
+      "tagline": "Every ordinary moment has a soundtrack.",
+      "description": "A story-oriented personality who enjoys expression, memorable experiences and turning everyday moments into narratives.",
+      "prototype": {
+        "social_energy": 85,
+        "curiosity": 65,
+        "creativity": 85,
+        "spontaneity": 75,
+        "reflection": 60,
+        "analytical_style": 35,
+        "expressiveness": 100,
+        "exploration": 75
+      },
+      "visual": {
+        "primary_color": "#EC4899",
+        "secondary_color": "#FBCFE8",
+        "aesthetic": "cinematic_pop",
+        "motifs": ["film_frames", "flash_photography", "editorial_typography"]
+      },
+      "keywords": ["storytelling", "expression", "experience", "cinematic"]
+    },
+    {
+      "id": "midnight_philosopher",
+      "name": "The Midnight Philosopher",
+      "tagline": "One question always leads to another.",
+      "description": "A reflective question-asker who enjoys exploring ideas, examining possibilities and understanding the bigger picture.",
+      "prototype": {
+        "social_energy": 30,
+        "curiosity": 100,
+        "creativity": 75,
+        "spontaneity": 35,
+        "reflection": 100,
+        "analytical_style": 90,
+        "expressiveness": 45,
+        "exploration": 60
+      },
+      "visual": {
+        "primary_color": "#3730A3",
+        "secondary_color": "#C4B5FD",
+        "aesthetic": "cosmic_indigo",
+        "motifs": ["constellations", "orbital_lines", "midnight_gradients"]
+      },
+      "keywords": ["philosophy", "reflection", "questions", "analysis"]
+    },
+    {
+      "id": "social_butterfly",
+      "name": "The Social Butterfly",
+      "tagline": "Collecting connections, not just contacts.",
+      "description": "A connection-oriented communicator who enjoys shared experiences, conversations and bringing people together.",
+      "prototype": {
+        "social_energy": 100,
+        "curiosity": 65,
+        "creativity": 55,
+        "spontaneity": 70,
+        "reflection": 40,
+        "analytical_style": 35,
+        "expressiveness": 100,
+        "exploration": 65
+      },
+      "visual": {
+        "primary_color": "#FB7185",
+        "secondary_color": "#FDBA74",
+        "aesthetic": "playful_pop",
+        "motifs": ["glitter", "social_orbits", "bright_stickers"]
+      },
+      "keywords": ["connection", "conversation", "expression", "community"]
+    },
+    {
+      "id": "creative_glitch",
+      "name": "The Creative Glitch",
+      "tagline": "Normal was never the assignment.",
+      "description": "An originality-seeker who enjoys experimenting with ideas and finding unusual ways to create something new.",
+      "prototype": {
+        "social_energy": 50,
+        "curiosity": 90,
+        "creativity": 100,
+        "spontaneity": 75,
+        "reflection": 60,
+        "analytical_style": 65,
+        "expressiveness": 80,
+        "exploration": 85
+      },
+      "visual": {
+        "primary_color": "#A3E635",
+        "secondary_color": "#D9F99D",
+        "aesthetic": "experimental_pixel",
+        "motifs": ["pixel_distortion", "acid_shapes", "broken_grids"]
+      },
+      "keywords": ["originality", "experimentation", "innovation", "creativity"]
+    },
+    {
+      "id": "plot_twister",
+      "name": "The Plot Twister",
+      "tagline": "Predictability is a boring plot.",
+      "description": "An adaptable novelty-seeker who enjoys surprises, unexpected directions and stories that refuse to follow a script.",
+      "prototype": {
+        "social_energy": 65,
+        "curiosity": 75,
+        "creativity": 80,
+        "spontaneity": 100,
+        "reflection": 35,
+        "analytical_style": 30,
+        "expressiveness": 75,
+        "exploration": 95
+      },
+      "visual": {
+        "primary_color": "#EF4444",
+        "secondary_color": "#FCA5A5",
+        "aesthetic": "surreal_glitch",
+        "motifs": ["broken_timelines", "unexpected_portals", "red_alert_shapes"]
+      },
+      "keywords": ["unpredictable", "novelty", "adaptability", "adventure"]
+    },
+    {
+      "id": "soft_rebel",
+      "name": "The Soft Rebel",
+      "tagline": "Quietly choosing a different route.",
+      "description": "An independent-minded creator who prefers authenticity and personal expression over following every trend.",
+      "prototype": {
+        "social_energy": 40,
+        "curiosity": 70,
+        "creativity": 85,
+        "spontaneity": 55,
+        "reflection": 85,
+        "analytical_style": 65,
+        "expressiveness": 55,
+        "exploration": 65
+      },
+      "visual": {
+        "primary_color": "#BE7890",
+        "secondary_color": "#E8BFCB",
+        "aesthetic": "alternative_vintage",
+        "motifs": ["distressed_textures", "handwritten_notes", "soft_contrasts"]
+      },
+      "keywords": ["independence", "authenticity", "originality", "reflection"]
+    },
+    {
+      "id": "curious_goblin",
+      "name": "The Curious Goblin",
+      "tagline": "One more random interest won't hurt.",
+      "description": "A collector of fascinating facts, unusual hobbies and unexpected interests who enjoys following curiosity wherever it leads.",
+      "prototype": {
+        "social_energy": 55,
+        "curiosity": 100,
+        "creativity": 80,
+        "spontaneity": 85,
+        "reflection": 60,
+        "analytical_style": 55,
+        "expressiveness": 70,
+        "exploration": 100
+      },
+      "visual": {
+        "primary_color": "#84CC16",
+        "secondary_color": "#D9F99D",
+        "aesthetic": "maximalist_sticker",
+        "motifs": ["collectible_stickers", "tiny_icons", "colourful_collages"]
+      },
+      "keywords": ["curiosity", "variety", "hobbies", "discovery"]
+    }
+  ]
+}

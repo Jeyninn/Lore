@@ -1,0 +1,77 @@
+
+<div class="auth-page">
+
+  <div class="auth-decoration">
+    <div class="glow-orb"></div>
+
+    <p class="deco-label">LORE.exe // NEW IDENTITY DETECTED</p>
+
+    <h2>EVERY<br>UNIVERSE<br>NEEDS A <span>YOU.</span></h2>
+
+    <p>Create your account. Discover your digital identity.</p>
+  </div>
+
+  <div class="auth-container">
+
+    <div class="auth-card">
+      <p class="section-label">// INITIALIZE YOUR IDENTITY</p>
+
+      <h1>Join <span>LORE.</span></h1>
+      <p class="auth-subtitle">Let's create your digital universe.</p>
+
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+        <label>Username</label>
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Your internet identity"
+        />
+
+        @if (signupForm.controls.username.touched &&
+             signupForm.controls.username.invalid) {
+          <small>Username is required.</small>
+        }
+
+        <label>Email address</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+        />
+
+        @if (signupForm.controls.email.touched &&
+             signupForm.controls.email.invalid) {
+          <small>Please enter a valid email address.</small>
+        }
+
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Minimum 8 characters"
+        />
+
+        @if (signupForm.controls.password.touched &&
+             signupForm.controls.password.invalid) {
+          <small>Password must contain at least 8 characters.</small>
+        }
+
+        @if (errorMessage) {
+          <div class="error-message">{{ errorMessage }}</div>
+        }
+
+        <button type="submit" [disabled]="loading">
+          {{ loading ? 'CREATING IDENTITY...' : 'CREATE ACCOUNT ↗' }}
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+        Already have an account?
+        <a routerLink="/login">Sign in</a>
+      </p>
+
+    </div>
+  </div>
+</div>

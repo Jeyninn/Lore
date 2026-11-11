@@ -1,0 +1,404 @@
+
+<div class="profile-page">
+
+  @if (loading) {
+    <div class="loading-state">
+      <div class="loader"></div>
+      <p>Decoding your digital identity...</p>
+    </div>
+  }
+
+  @if (error && !loading) {
+    <div class="error-message">{{ error }}</div>
+  }
+
+  @if (!loading && profile; as p) {
+
+    <main class="profile-container">
+
+      <!-- PAGE HEADER -->
+      <header class="profile-header">
+        <div>
+          <p class="eyebrow">LORE.exe // IDENTITY REPORT</p>
+          <h1>Your Digital <span>Identity.</span></h1>
+          <p class="subtitle">Your internet personality, decoded.</p>
+        </div>
+
+        <div class="generated-stamp">
+          <span class="status-dot"></span>
+          PROFILE GENERATED
+        </div>
+      </header>
+
+      <!-- MAIN IDENTITY CARD -->
+      <section class="identity-card">
+
+       
+<div class="character-panel">
+
+  <div class="character-glow"></div>
+  <div class="character-orbit orbit-one"></div>
+  <div class="character-orbit orbit-two"></div>
+
+  <span class="spark spark-one">✦</span>
+  <span class="spark spark-two">✧</span>
+  <span class="spark spark-three">✳</span>
+
+  <img
+    class="archetype-character"
+    [src]="primaryCharacterImage"
+    [alt]="(p.primary_archetype?.name || 'Your archetype') + ' character'"
+  />
+
+  <div class="character-caption">
+    <span>YOUR DIGITAL ALTER EGO</span>
+    <span class="caption-line"></span>
+  </div>
+
+</div>
+
+
+        <div class="identity-content">
+          <p class="section-label">YOUR PRIMARY ARCHETYPE</p>
+
+          <h2>
+            {{ p.primary_archetype?.name || p.primary_archetype?.id || p.primary_archetype }}
+          </h2>
+
+          @if (p.primary_archetype?.tagline) {
+            <p class="subtitle">
+              "{{ p.primary_archetype.tagline }}"
+            </p>
+          }
+
+          <div class="secondary-character">
+
+  <img
+    [src]="secondaryCharacterImage"
+    [alt]="p.secondary_archetype?.name || 'Secondary archetype'"
+  />
+
+  <div>
+    <span class="section-label">YOUR SECONDARY ENERGY</span>
+    <h3>
+      {{ p.secondary_archetype?.name || p.secondary_archetype?.id }}
+    </h3>
+    <p>{{ p.secondary_archetype?.tagline }}</p>
+  </div>
+
+</div>
+
+          @if (p.lore_profile; as lore) {
+            <div class="identity-narrative">
+              {{ lore.narrative }}
+            </div>
+
+            <div class="trait-tags">
+              @for (keyword of p.primary_archetype?.keywords || []; track keyword) {
+                <span>✦ {{ keyword | uppercase }}</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="identity-token">
+          <div class="token-star">✳</div>
+          <span>LORE ID</span>
+          <strong>EXE-001</strong>
+          <div class="token-bar"></div>
+          <small>IDENTITY VERIFIED</small>
+        </div>
+
+      </section>
+
+      <!-- PERSONALITY DNA -->
+      @if (p.feature_scores) {
+        <section class="dna-section">
+
+          <div class="section-heading">
+            <div>
+              <p class="section-label">THE DATA BEHIND YOU</p>
+              <h2>YOUR PERSONALITY <span>DNA.</span></h2>
+            </div>
+            <span class="dimension-count">08 CORE DIMENSIONS</span>
+          </div>
+
+          <div class="scores-grid">
+            @for (score of p.feature_scores | keyvalue; track score.key) {
+              <div class="score-item">
+
+                <div class="score-heading">
+                  <span>{{ formatKey(score.key) | titlecase }}</span>
+                  <strong>{{ score.value }}/100</strong>
+                </div>
+
+                <div class="score-track">
+                  <div
+                    class="score-fill"
+                    [style.width.%]="score.value">
+                  </div>
+                </div>
+
+              </div>
+            }
+          </div>
+
+        </section>
+      }
+
+      <!-- WRITING INTELLIGENCE -->
+      @if (p.writing_analysis?.themes?.length) {
+        <section class="writing-section">
+
+          <div class="section-heading">
+            <div>
+              <p class="section-label">AI // SEMANTIC ANALYSIS</p>
+              <h2>YOUR WRITING <span>INTELLIGENCE.</span></h2>
+              <p class="writing-description">
+                Your words reveal themes in the ideas you express.
+                Here's what our semantic model discovered.
+              </p>
+            </div>
+
+            <div class="writing-model">
+              <span class="model-dot"></span>
+              MINILM ACTIVE
+            </div>
+          </div>
+
+          <div class="writing-analysis-card">
+
+            <div class="writing-card-header">
+              <div>
+                <span class="section-label">01 // SEMANTIC SIGNATURE</span>
+                <h3>What your words reflect.</h3>
+              </div>
+
+              <span class="embedding-label">
+                {{ p.writing_analysis.embedding_dimensions }}D EMBEDDINGS
+              </span>
+            </div>
+
+            <div class="theme-list">
+
+              @for (theme of p.writing_analysis.themes; track theme.theme) {
+                <div class="theme-item">
+
+                  <div class="theme-heading">
+                    <div class="theme-name">
+                      <span class="theme-symbol">✳</span>
+                      <span>{{ formatKey(theme.theme) | titlecase }}</span>
+                    </div>
+
+                    <strong>
+                      {{ theme.similarity_score | number:'1.1-2' }}%
+                    </strong>
+                  </div>
+
+                  <div class="theme-track">
+                    <div
+                      class="theme-fill"
+                      [style.width.%]="theme.similarity_score">
+                    </div>
+                  </div>
+
+                </div>
+              }
+
+            </div>
+
+            <div class="writing-insight">
+              <span class="insight-icon">✦</span>
+              <div>
+                <strong>SEMANTIC INSIGHT</strong>
+                <p>
+                  {{ p.writing_analysis.interpretation }}
+                </p>
+              </div>
+            </div>
+
+            <div class="writing-model-footer">
+              <span>MODEL: {{ p.writing_analysis.model }}</span>
+              <span>ANALYSIS: COMPLETE</span>
+            </div>
+
+          </div>
+
+        </section>
+      }
+
+      @if (p.lore_profile; as lore) {
+
+        <!-- LORE CARDS -->
+        <section class="lore-grid">
+
+          <article class="lore-card aesthetic-card">
+            <p class="section-label">02 // YOUR AESTHETIC</p>
+
+            <div class="card-illustration aesthetic-illustration">
+              <span>✳</span>
+              <span>✦</span>
+              <span>◈</span>
+            </div>
+
+            <h3>Aesthetic Identity</h3>
+
+            <div class="identity-tags">
+              @for (item of lore.aesthetic_identity || []; track item) {
+                <span>{{ item }}</span>
+              }
+            </div>
+          </article>
+
+          <article class="lore-card communication-card">
+            <p class="section-label">03 // YOUR ENERGY</p>
+
+            <div class="card-illustration communication-illustration">
+              <span>•••</span>
+            </div>
+
+            <h3>Communication Style</h3>
+
+            <div class="communication-list">
+              @for (item of lore.communication_style || []; track item) {
+                <span>✦ {{ item }}</span>
+              }
+            </div>
+          </article>
+
+          <article class="lore-card quote-card">
+            <p class="section-label">04 // YOUR SIGNATURE</p>
+
+            <div class="quote-mark">“</div>
+
+            <blockquote>
+              {{ lore.signature_quote }}
+            </blockquote>
+
+            <span class="quote-caption">
+              A LITTLE PIECE OF YOUR LORE.
+            </span>
+          </article>
+
+        </section>
+
+        <!-- PERSONAL NARRATIVE -->
+        <section class="narrative-section">
+          <p class="section-label">05 // THE STORY BEHIND THE SCREEN</p>
+
+          <h2>{{ lore.identity_title }}</h2>
+
+          <p>{{ lore.narrative }}</p>
+        </section>
+
+        <!-- RECOMMENDATIONS -->
+        @if (lore.recommendations?.length) {
+          <section class="recommendations-section">
+
+            <div class="section-heading">
+              <div>
+                <p class="section-label">06 // YOUR NEXT OBSESSIONS</p>
+                <h2>THINGS YOU MIGHT <span>LOVE.</span></h2>
+              </div>
+
+              <span class="recommendation-symbol">✦</span>
+            </div>
+
+            <div class="recommendation-grid">
+              @for (item of lore.recommendations; track $index) {
+                <div class="recommendation-item">
+                  <span>✳</span>
+                  <p>{{ item }}</p>
+                </div>
+              }
+            </div>
+
+          </section>
+        }
+
+      }
+
+      <!-- FOOTER -->
+      <footer class="profile-footer">
+        
+<!-- DOWNLOADABLE LORE IDENTITY CARD -->
+<section class="download-section">
+
+  <div class="section-heading">
+    <div>
+      <p class="section-label">07 // YOUR DIGITAL COLLECTIBLE</p>
+      <h2>YOUR IDENTITY. <span>YOUR CARD.</span></h2>
+      <p class="writing-description">
+        A little piece of your internet identity, ready to share.
+      </p>
+    </div>
+  </div>
+
+  <!-- This element is captured by html2canvas -->
+  <div class="identity-card-download" id="lore-identity-card">
+
+    <div class="download-card-top">
+      <div class="download-brand">✳ LORE<span>.exe</span></div>
+      <span class="download-status">IDENTITY UNLOCKED</span>
+    </div>
+
+    <div class="download-card-main">
+
+      <div class="download-character">
+        <img
+          [src]="primaryCharacterImage"
+          [alt]="p.primary_archetype?.name || 'Primary archetype'"
+        />
+      </div>
+
+      <div class="download-identity-info">
+        <p>YOUR DIGITAL ARCHETYPE</p>
+
+        <h2>
+          {{ p.primary_archetype?.name || 'Unknown Archetype' }}
+        </h2>
+
+        <span class="download-tagline">
+          {{ p.primary_archetype?.tagline }}
+        </span>
+
+        <div class="download-secondary">
+          <span>SECONDARY ENERGY</span>
+          <strong>
+            {{ p.secondary_archetype?.name || 'Unknown' }}
+          </strong>
+        </div>
+
+        <div class="download-quote">
+          "{{ p.lore_profile?.signature_quote }}"
+        </div>
+      </div>
+
+    </div>
+
+    <div class="download-card-bottom">
+      <span>LORE IDENTITY SYSTEM</span>
+      <span>YOUR STORY, YOUR UNIVERSE. ✦</span>
+    </div>
+
+    <div class="download-decoration decoration-one"></div>
+    <div class="download-decoration decoration-two"></div>
+
+  </div>
+
+  <button
+    class="download-button"
+    type="button"
+    (click)="downloadIdentityCard()">
+    <span>↓</span>
+    DOWNLOAD MY IDENTITY CARD
+  </button>
+
+</section>
+
+      </footer>
+
+    </main>
+  }
+
+</div>

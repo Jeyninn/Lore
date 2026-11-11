@@ -1,0 +1,508 @@
+
+:host {
+  display: block;
+  background: #10130F;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.home-page {
+  min-height: 100vh;
+  background: #10130F;
+  color: #EAEDE4;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* HERO SECTION */
+
+.hero {
+  min-height: 680px;
+  padding: 90px 9%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  background:
+    linear-gradient(rgba(199, 244, 100, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(199, 244, 100, 0.025) 1px, transparent 1px),
+    #10130F;
+  background-size: 48px 48px;
+}
+
+.hero::after {
+  content: "SYSTEM / LORE-001";
+  position: absolute;
+  bottom: 25px;
+  left: 9%;
+  color: #66715C;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* Status label */
+
+.status,
+.section-label {
+  color: #C7F464;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid #48513F;
+  border-radius: 3px;
+  background: #171B16;
+}
+
+.status-dot {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background: #C7F464;
+  box-shadow: 0 0 10px #C7F46466;
+  animation: statusPulse 2s infinite;
+}
+
+/* Hero typography */
+
+.hero h1 {
+  color: #EAEDE4;
+  font-size: clamp(42px, 5.3vw, 72px);
+  line-height: 1.08;
+  letter-spacing: -3.5px;
+  margin: 30px 0;
+  font-weight: 900;
+}
+
+.hero h1 span,
+.intro-section h2 span,
+.final-cta h2 span {
+  color: #C7F464;
+}
+
+.hero-description {
+  color: #929B8C;
+  max-width: 490px;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* Hero buttons */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+  background: #C7F464;
+  color: #10130F;
+  border: 1px solid #C7F464;
+  border-radius: 3px;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.primary-btn span {
+  font-size: 17px;
+}
+
+.primary-btn:hover {
+  background: transparent;
+  color: #C7F464;
+  box-shadow: 0 0 22px #C7F46418;
+  transform: translateY(-3px);
+}
+
+.secondary-btn {
+  color: #929B8C;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.secondary-btn:hover {
+  color: #69D9D0;
+}
+
+/* Hero metadata */
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 65px;
+  color: #687261;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+/* IDENTITY ORB */
+
+.hero-visual {
+  position: relative;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identity-orb {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #293B27, #171F18 58%, #10130F);
+  border: 1px solid #C7F46488;
+  box-shadow:
+    0 0 45px #C7F46412,
+    inset 0 0 35px #69D9D015;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  animation: float 5s ease-in-out infinite;
+  position: relative;
+}
+
+.identity-orb::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed #69D9D055;
+  border-radius: 50%;
+  animation: rotate 25s linear infinite;
+}
+
+.orb-symbol {
+  font-size: 55px;
+  color: #C7F464;
+  text-shadow: 0 0 20px #C7F46455;
+}
+
+.orb-text {
+  color: #EAEDE4;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.orb-subtext {
+  margin-top: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #69D9D0;
+}
+
+/* Orb rings */
+
+.orbit {
+  position: absolute;
+  border: 1px solid #69D9D044;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 330px;
+  height: 330px;
+}
+
+.orbit-two {
+  width: 410px;
+  height: 410px;
+  border-color: #C7F46435;
+  border-style: dashed;
+  animation: rotate 35s linear infinite;
+}
+
+/* Floating data labels */
+
+.floating-tag {
+  position: absolute;
+  z-index: 3;
+  padding: 11px 14px;
+  background: #171B16;
+  border: 1px solid #48513F;
+  color: #C7F464;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  box-shadow: 5px 5px 0 #0A0D09;
+}
+
+.tag-one {
+  top: 45px;
+  right: 5px;
+}
+
+.tag-two {
+  bottom: 75px;
+  left: 0;
+  color: #69D9D0;
+  border-color: #69D9D044;
+}
+
+.tag-three {
+  bottom: 20px;
+  right: 0;
+}
+
+/* INTRO SECTION */
+
+.intro-section {
+  padding: 105px 12%;
+  text-align: center;
+  background: #171B16;
+  border-top: 1px solid #343D31;
+  border-bottom: 1px solid #343D31;
+}
+
+.intro-section h2,
+.final-cta h2 {
+  color: #EAEDE4;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.3;
+  margin: 25px 0;
+  letter-spacing: -1.5px;
+}
+
+.intro-section > p:last-child {
+  max-width: 650px;
+  margin: auto;
+  color: #929B8C;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+/* FEATURE CARDS */
+
+.feature-grid {
+  padding: 90px 9%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  background: #10130F;
+}
+
+.feature-card {
+  position: relative;
+  padding: 32px;
+  min-height: 250px;
+  background: #171B16;
+  border: 1px solid #343D31;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: #C7F464;
+  transition: width 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: #667653;
+  background: #1B2119;
+}
+
+.feature-card:hover::before {
+  width: 100%;
+}
+
+.feature-number {
+  color: #687261;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.feature-icon {
+  margin: 25px 0;
+  color: #C7F464;
+  font-size: 32px;
+}
+
+.feature-card h3 {
+  color: #EAEDE4;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.feature-card p {
+  color: #929B8C;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* FINAL CTA */
+
+.final-cta {
+  padding: 100px 20px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center, #C7F4640D, transparent 65%),
+    #141912;
+  border-top: 1px solid #343D31;
+}
+
+.final-cta .primary-btn {
+  margin-top: 20px;
+}
+
+/* FOOTER */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 25px 9%;
+  border-top: 1px solid #343D31;
+  background: #10130F;
+  color: #687261;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes statusPulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 75px 7%;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-visual {
+    height: 420px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 60px 6%;
+  }
+
+  .hero h1 {
+    font-size: clamp(37px, 10vw, 52px);
+    letter-spacing: -2px;
+  }
+
+  .hero-meta {
+    gap: 12px;
+    font-size: 8px;
+    margin-top: 40px;
+  }
+
+  .hero-visual {
+    height: 350px;
+    transform: scale(0.85);
+    margin: -10px 0;
+  }
+
+  .orbit-one {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orbit-two {
+    width: 340px;
+    height: 340px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+    padding: 60px 6%;
+  }
+
+  .intro-section {
+    padding: 75px 7%;
+  }
+
+  .final-cta {
+    padding: 75px 20px;
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 25px 6%;
+    line-height: 1.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

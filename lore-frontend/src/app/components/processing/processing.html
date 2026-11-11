@@ -1,0 +1,113 @@
+
+<div class="processing-page">
+
+  @if (loading) {
+    <main class="processing-container">
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        LORE SYSTEM ONLINE
+        <span class="status-version">V.01 / IDENTITY ENGINE</span>
+      </div>
+
+      <section class="processing-visual">
+
+        <div class="orbit orbit-outer"></div>
+        <div class="orbit orbit-middle"></div>
+        <div class="orbit orbit-inner"></div>
+
+        <div class="scan-ring">
+          <div class="scan-core">
+            <span class="core-symbol">✳</span>
+            <span class="core-text">LORE</span>
+          </div>
+        </div>
+
+        <span class="particle particle-one">✦</span>
+        <span class="particle particle-two">✧</span>
+        <span class="particle particle-three">01</span>
+        <span class="particle particle-four">10</span>
+
+      </section>
+
+      <section class="processing-copy">
+
+        <p class="eyebrow">LORE.exe // PERSONALITY SYNTHESIS</p>
+
+        <h1>Connecting the <span>dots.</span></h1>
+
+        <p class="description">
+          Your answers are becoming something more.
+          We're decoding your patterns, mapping your personality,
+          and building your digital identity.
+        </p>
+
+      </section>
+
+      <section class="analysis-stages">
+
+        <div class="stage active">
+          <span class="stage-icon">01</span>
+          <div>
+            <strong>Extracting personality features</strong>
+            <small>Mapping your questionnaire responses</small>
+          </div>
+          <span class="stage-indicator">PROCESSING</span>
+        </div>
+
+        <div class="stage active">
+          <span class="stage-icon">02</span>
+          <div>
+            <strong>Matching your archetype</strong>
+            <small>Comparing your identity patterns</small>
+          </div>
+          <span class="stage-indicator">PROCESSING</span>
+        </div>
+
+        <div class="stage active">
+          <span class="stage-icon">03</span>
+          <div>
+            <strong>Analysing your digital footprint</strong>
+            <small>Discovering semantic themes</small>
+          </div>
+          <span class="stage-indicator">PROCESSING</span>
+        </div>
+
+        <div class="stage">
+          <span class="stage-icon">04</span>
+          <div>
+            <strong>Generating your personal lore</strong>
+            <small>Preparing your identity report</small>
+          </div>
+          <span class="stage-indicator">QUEUED</span>
+        </div>
+
+      </section>
+
+      <div class="processing-footer">
+        <span>PLEASE DON'T CLOSE THIS WINDOW</span>
+        <span>DECODING YOUR UNIVERSE <span class="loading-dots">...</span></span>
+      </div>
+
+    </main>
+  }
+
+  @if (!loading && errorMessage) {
+    <main class="error-container">
+
+      <div class="error-symbol">!</div>
+
+      <p class="eyebrow">LORE.exe // SYSTEM INTERRUPTED</p>
+
+      <h1>Something <span>glitched.</span></h1>
+
+      <p>{{ errorMessage }}</p>
+
+      <button type="button" (click)="retry()">
+        RESTART IDENTITY SCAN ↗
+      </button>
+
+    </main>
+  }
+
+</div>

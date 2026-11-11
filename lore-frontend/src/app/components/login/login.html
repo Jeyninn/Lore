@@ -1,0 +1,61 @@
+
+<div class="auth-page">
+
+  <div class="auth-decoration">
+    <div class="glow-orb"></div>
+    <p class="deco-label">LORE.exe // ACCESS PORTAL</p>
+    <h2>WELCOME<br>BACK TO<br><span>YOUR UNIVERSE.</span></h2>
+    <p>Your story doesn't end when you log out.</p>
+  </div>
+
+  <div class="auth-container">
+
+    <div class="auth-card">
+      <p class="section-label">// USER AUTHENTICATION</p>
+      <h1>Sign <span>in.</span></h1>
+      <p class="auth-subtitle">Enter your credentials to continue.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <label>Email address</label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="you@example.com"
+        />
+
+        @if (loginForm.controls.email.touched &&
+             loginForm.controls.email.invalid) {
+          <small>Please enter a valid email address.</small>
+        }
+
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+
+        @if (loginForm.controls.password.touched &&
+             loginForm.controls.password.invalid) {
+          <small>Password is required.</small>
+        }
+
+        @if (errorMessage) {
+          <div class="error-message">{{ errorMessage }}</div>
+        }
+
+        <button type="submit" [disabled]="loading">
+          {{ loading ? 'AUTHENTICATING...' : 'ENTER YOUR UNIVERSE ↗' }}
+        </button>
+
+      </form>
+
+      <p class="auth-footer">
+        New to LORE.exe?
+        <a routerLink="/signup">Create an account</a>
+      </p>
+    </div>
+
+  </div>
+</div>

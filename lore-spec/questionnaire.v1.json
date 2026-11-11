@@ -1,0 +1,374 @@
+{
+  "spec_id": "lore-questionnaire",
+  "version": 1,
+  "title": "Discover Your Lore",
+  "description": "A playful questionnaire for generating an entertainment-focused digital identity.",
+  "locale": "en",
+  "status": "active",
+  "scoring": {
+    "method": "dimension_mean",
+    "input_min": 0,
+    "input_max": 4,
+    "output_min": 0,
+    "output_max": 100,
+    "rounding": "nearest_integer",
+    "missing_dimension": null,
+    "minimum_scored_answers": 8,
+    "dimensions": [
+      "social_energy",
+      "curiosity",
+      "creativity",
+      "spontaneity",
+      "reflection",
+      "analytical_style",
+      "expressiveness",
+      "exploration"
+    ],
+    "notes": [
+      "Scores describe patterns in questionnaire responses, not validated personality traits.",
+      "Only dimensions explicitly assigned to an answer are included in that dimension's mean.",
+      "A missing dimension remains null; do not silently replace it with zero.",
+      "Aesthetic, humour, music and communication preferences are used as profile metadata and recommendation signals, not personality scores."
+    ]
+  },
+  "completion_rules": {
+    "required_question_count": 24,
+    "all_questions_required": true,
+    "allow_partial_submission": false,
+    "minimum_writing_sample_characters": 100,
+    "maximum_writing_sample_characters": 2000,
+    "writing_sample_optional": true,
+    "writing_sample_requires_explicit_consent": true
+  },
+  "questions": [
+    {
+      "id": "q01",
+      "category": "social_energy",
+      "prompt": "Your friends cancel plans at the last minute. What's your reaction?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q01_a", "label": "Honestly, I'm relieved. Solo time!", "weights": {"social_energy": 0, "reflection": 3}},
+        {"id": "q01_b", "label": "I'll find something else to do.", "weights": {"social_energy": 2, "spontaneity": 3, "exploration": 3}},
+        {"id": "q01_c", "label": "Let's reschedule. I wanted to see them.", "weights": {"social_energy": 4, "expressiveness": 2}},
+        {"id": "q01_d", "label": "Unexpected solo adventure? I'm in.", "weights": {"social_energy": 2, "spontaneity": 4, "exploration": 4}}
+      ]
+    },
+    {
+      "id": "q02",
+      "category": "social_energy",
+      "prompt": "At a party where you barely know anyone, you usually...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q02_a", "label": "End up talking to almost everyone.", "weights": {"social_energy": 4, "expressiveness": 4}},
+        {"id": "q02_b", "label": "Find one person for a deep conversation.", "weights": {"social_energy": 2, "reflection": 3, "expressiveness": 2}},
+        {"id": "q02_c", "label": "Observe the room before joining in.", "weights": {"social_energy": 1, "reflection": 4, "analytical_style": 3}},
+        {"id": "q02_d", "label": "Bring the chaos. Make it memorable.", "weights": {"social_energy": 4, "spontaneity": 4, "expressiveness": 4}}
+      ]
+    },
+    {
+      "id": "q03",
+      "category": "social_energy",
+      "prompt": "Your ideal weekend looks like...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q03_a", "label": "Going out and doing something exciting.", "weights": {"social_energy": 4, "spontaneity": 3, "exploration": 4}},
+        {"id": "q03_b", "label": "A peaceful day by myself.", "weights": {"social_energy": 0, "reflection": 3}},
+        {"id": "q03_c", "label": "Quality time with a small circle.", "weights": {"social_energy": 2, "expressiveness": 2}},
+        {"id": "q03_d", "label": "Trying something I've never done.", "weights": {"curiosity": 4, "spontaneity": 4, "exploration": 4}}
+      ]
+    },
+    {
+      "id": "q04",
+      "category": "social_energy",
+      "prompt": "When you meet someone new, you tend to...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q04_a", "label": "Start a conversation easily.", "weights": {"social_energy": 4, "expressiveness": 4}},
+        {"id": "q04_b", "label": "Wait for them to approach me.", "weights": {"social_energy": 1, "reflection": 2}},
+        {"id": "q04_c", "label": "Look for a shared interest first.", "weights": {"social_energy": 2, "curiosity": 3}},
+        {"id": "q04_d", "label": "Warm up slowly, then talk a lot.", "weights": {"social_energy": 2, "expressiveness": 3}}
+      ]
+    },
+    {
+      "id": "q05",
+      "category": "thinking_style",
+      "prompt": "You suddenly discover a topic that interests you. What happens next?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q05_a", "label": "I research it until I know everything.", "weights": {"curiosity": 4, "analytical_style": 4, "reflection": 2}},
+        {"id": "q05_b", "label": "I try it immediately.", "weights": {"curiosity": 3, "spontaneity": 4, "exploration": 4}},
+        {"id": "q05_c", "label": "I save it for later and keep collecting interests.", "weights": {"curiosity": 4, "reflection": 3}},
+        {"id": "q05_d", "label": "I tell everyone about it.", "weights": {"curiosity": 3, "expressiveness": 4}}
+      ]
+    },
+    {
+      "id": "q06",
+      "category": "thinking_style",
+      "prompt": "When making a difficult decision, you usually...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q06_a", "label": "Analyse the possibilities carefully.", "weights": {"analytical_style": 4, "reflection": 4}},
+        {"id": "q06_b", "label": "Trust my intuition.", "weights": {"analytical_style": 1, "spontaneity": 3}},
+        {"id": "q06_c", "label": "Ask people I trust for perspective.", "weights": {"social_energy": 3, "reflection": 3}},
+        {"id": "q06_d", "label": "Make a choice and adapt as I go.", "weights": {"spontaneity": 4, "exploration": 3}}
+      ]
+    },
+    {
+      "id": "q07",
+      "category": "thinking_style",
+      "prompt": "What do you naturally notice first?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q07_a", "label": "Small details other people miss.", "weights": {"analytical_style": 4, "reflection": 3}},
+        {"id": "q07_b", "label": "Connections between unrelated things.", "weights": {"curiosity": 4, "creativity": 4}},
+        {"id": "q07_c", "label": "The bigger picture.", "weights": {"reflection": 3, "analytical_style": 3}},
+        {"id": "q07_d", "label": "Practical ways to solve a problem.", "weights": {"analytical_style": 4, "curiosity": 2}}
+      ]
+    },
+    {
+      "id": "q08",
+      "category": "thinking_style",
+      "prompt": "It's 2 a.m. and your brain is still active. What's it doing?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q08_a", "label": "Planning my future.", "weights": {"reflection": 4, "analytical_style": 3}},
+        {"id": "q08_b", "label": "Replaying conversations and moments.", "weights": {"reflection": 4, "expressiveness": 1}},
+        {"id": "q08_c", "label": "Inventing fictional scenarios.", "weights": {"creativity": 4, "reflection": 3}},
+        {"id": "q08_d", "label": "Thinking about a completely random question.", "weights": {"curiosity": 4, "creativity": 3}}
+      ]
+    },
+    {
+      "id": "q09",
+      "category": "chaos_and_spontaneity",
+      "prompt": "Your relationship with plans is...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q09_a", "label": "I need a schedule.", "weights": {"analytical_style": 4, "reflection": 3}},
+        {"id": "q09_b", "label": "A rough plan, with room for surprises.", "weights": {"analytical_style": 2, "spontaneity": 3}},
+        {"id": "q09_c", "label": "I'll figure it out when I get there.", "weights": {"spontaneity": 4, "exploration": 3}},
+        {"id": "q09_d", "label": "What plans? We improvise.", "weights": {"spontaneity": 4, "creativity": 3}}
+      ]
+    },
+    {
+      "id": "q10",
+      "category": "chaos_and_spontaneity",
+      "prompt": "You suddenly get a completely free day. You...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q10_a", "label": "Catch up on everything I've planned.", "weights": {"analytical_style": 4, "reflection": 2}},
+        {"id": "q10_b", "label": "Go somewhere I've never been.", "weights": {"spontaneity": 4, "exploration": 4}},
+        {"id": "q10_c", "label": "Start a random new hobby.", "weights": {"curiosity": 4, "creativity": 3, "exploration": 4}},
+        {"id": "q10_d", "label": "Do absolutely nothing.", "weights": {"reflection": 3, "social_energy": 0}}
+      ]
+    },
+    {
+      "id": "q11",
+      "category": "chaos_and_spontaneity",
+      "prompt": "Your friends would describe your decisions as...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q11_a", "label": "Carefully calculated.", "weights": {"analytical_style": 4, "reflection": 3}},
+        {"id": "q11_b", "label": "Spontaneous.", "weights": {"spontaneity": 4, "exploration": 3}},
+        {"id": "q11_c", "label": "Unpredictable in a fun way.", "weights": {"spontaneity": 4, "creativity": 3}},
+        {"id": "q11_d", "label": "Thoughtful and considered.", "weights": {"reflection": 4, "analytical_style": 3}}
+      ]
+    },
+    {
+      "id": "q12",
+      "category": "chaos_and_spontaneity",
+      "prompt": "Something unexpected disrupts your day. Your first response is...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q12_a", "label": "Find a backup plan.", "weights": {"analytical_style": 4, "reflection": 2}},
+        {"id": "q12_b", "label": "Adapt and see where it goes.", "weights": {"spontaneity": 4, "exploration": 3}},
+        {"id": "q12_c", "label": "Panic briefly, then solve it.", "weights": {"analytical_style": 3, "spontaneity": 2}},
+        {"id": "q12_d", "label": "Maybe this will make a good story.", "weights": {"creativity": 4, "spontaneity": 3}}
+      ]
+    },
+    {
+      "id": "q13",
+      "category": "creative_identity",
+      "prompt": "Choose the universe you'd most like to live in.",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q13_a", "label": "A magical fantasy world.", "tags": ["fantasy", "magic", "whimsy"]},
+        {"id": "q13_b", "label": "A neon-lit cyberpunk city.", "tags": ["cyberpunk", "futuristic", "neon"]},
+        {"id": "q13_c", "label": "A cosy small town.", "tags": ["cozy", "nostalgia", "slow_living"]},
+        {"id": "q13_d", "label": "A mysterious dark-academia campus.", "tags": ["dark_academia", "mystery", "literature"]}
+      ]
+    },
+    {
+      "id": "q14",
+      "category": "creative_identity",
+      "prompt": "Which activity sounds most satisfying?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q14_a", "label": "Creating something original.", "weights": {"creativity": 4, "expressiveness": 3}},
+        {"id": "q14_b", "label": "Discovering something unknown.", "weights": {"curiosity": 4, "exploration": 4}},
+        {"id": "q14_c", "label": "Understanding how something works.", "weights": {"curiosity": 4, "analytical_style": 4}},
+        {"id": "q14_d", "label": "Finding and appreciating beautiful things.", "tags": ["visual_aesthetic", "art", "design"]}
+      ]
+    },
+    {
+      "id": "q15",
+      "category": "creative_identity",
+      "prompt": "Pick the creative superpower you'd want.",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q15_a", "label": "An endless imagination.", "weights": {"creativity": 4, "curiosity": 3}},
+        {"id": "q15_b", "label": "The ability to tell unforgettable stories.", "weights": {"creativity": 4, "expressiveness": 4}},
+        {"id": "q15_c", "label": "The ability to solve impossible problems.", "weights": {"analytical_style": 4, "curiosity": 3}},
+        {"id": "q15_d", "label": "The ability to create stunning visuals.", "weights": {"creativity": 4}, "tags": ["visual_creativity"]}
+      ]
+    },
+    {
+      "id": "q16",
+      "category": "creative_identity",
+      "prompt": "Which movie genre would you choose for your life story?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q16_a", "label": "Coming-of-age.", "tags": ["coming_of_age", "growth", "nostalgia"]},
+        {"id": "q16_b", "label": "Mystery.", "tags": ["mystery", "curiosity", "suspense"]},
+        {"id": "q16_c", "label": "Comedy.", "tags": ["comedy", "humour", "lighthearted"]},
+        {"id": "q16_d", "label": "Science fiction.", "tags": ["science_fiction", "futuristic", "technology"]},
+        {"id": "q16_e", "label": "Psychological drama.", "tags": ["drama", "introspection", "complexity"]}
+      ]
+    },
+    {
+      "id": "q17",
+      "category": "communication_style",
+      "prompt": "Your humour is best described as...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q17_a", "label": "Sarcastic.", "tags": ["sarcastic_humour"]},
+        {"id": "q17_b", "label": "Dry and understated.", "tags": ["dry_humour"]},
+        {"id": "q17_c", "label": "Random and chaotic.", "tags": ["chaotic_humour"]},
+        {"id": "q17_d", "label": "Wholesome.", "tags": ["wholesome_humour"]},
+        {"id": "q17_e", "label": "Dark and absurdist.", "tags": ["absurdist_humour"]}
+      ]
+    },
+    {
+      "id": "q18",
+      "category": "communication_style",
+      "prompt": "Your usual texting style is...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q18_a", "label": "Long paragraphs.", "tags": ["long_form_texting"]},
+        {"id": "q18_b", "label": "Short replies.", "tags": ["concise_texting"]},
+        {"id": "q18_c", "label": "Memes and reaction images.", "tags": ["meme_texting"]},
+        {"id": "q18_d", "label": "Voice notes.", "tags": ["voice_note_texting"]},
+        {"id": "q18_e", "label": "It depends on the person.", "tags": ["adaptive_texting"]}
+      ]
+    },
+    {
+      "id": "q19",
+      "category": "communication_style",
+      "prompt": "When you're excited about something, you...",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q19_a", "label": "Explain every little detail.", "weights": {"expressiveness": 4, "curiosity": 3}},
+        {"id": "q19_b", "label": "Jump between a hundred related topics.", "weights": {"expressiveness": 4, "creativity": 3}},
+        {"id": "q19_c", "label": "Use examples and stories.", "weights": {"expressiveness": 4, "creativity": 3}},
+        {"id": "q19_d", "label": "Struggle to put it into words.", "weights": {"expressiveness": 1, "reflection": 2}}
+      ]
+    },
+    {
+      "id": "q20",
+      "category": "communication_style",
+      "prompt": "What makes a conversation memorable to you?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q20_a", "label": "Intellectual depth.", "weights": {"curiosity": 3, "reflection": 4, "analytical_style": 3}},
+        {"id": "q20_b", "label": "Shared humour.", "tags": ["humour_connection"]},
+        {"id": "q20_c", "label": "Emotional connection.", "weights": {"social_energy": 3, "expressiveness": 3}},
+        {"id": "q20_d", "label": "A completely new perspective.", "weights": {"curiosity": 4, "exploration": 3}}
+      ]
+    },
+    {
+      "id": "q21",
+      "category": "digital_culture",
+      "prompt": "Where would we most likely find you online?",
+      "type": "multi_select",
+      "required": true,
+      "min_selections": 1,
+      "max_selections": 3,
+      "options": [
+        {"id": "q21_a", "label": "Pinterest.", "tags": ["pinterest", "visual_discovery"]},
+        {"id": "q21_b", "label": "Reddit.", "tags": ["reddit", "communities", "discussion"]},
+        {"id": "q21_c", "label": "Instagram.", "tags": ["instagram", "visual_social"]},
+        {"id": "q21_d", "label": "YouTube.", "tags": ["youtube", "video_content"]},
+        {"id": "q21_e", "label": "Discord.", "tags": ["discord", "online_communities"]},
+        {"id": "q21_f", "label": "A little bit of everything.", "tags": ["multi_platform"]}
+      ]
+    },
+    {
+      "id": "q22",
+      "category": "digital_culture",
+      "prompt": "Choose up to three aesthetics that feel like you.",
+      "type": "multi_select",
+      "required": true,
+      "min_selections": 1,
+      "max_selections": 3,
+      "options": [
+        {"id": "q22_a", "label": "Cybercore.", "tags": ["cybercore", "neon", "digital"]},
+        {"id": "q22_b", "label": "Dark academia.", "tags": ["dark_academia", "literary", "moody"]},
+        {"id": "q22_c", "label": "Coquette.", "tags": ["coquette", "romantic", "soft"]},
+        {"id": "q22_d", "label": "Minimalist.", "tags": ["minimalist", "clean", "simple"]},
+        {"id": "q22_e", "label": "Vintage nostalgia.", "tags": ["vintage", "nostalgia", "retro"]},
+        {"id": "q22_f", "label": "Dreamcore.", "tags": ["dreamcore", "surreal", "dreamy"]},
+        {"id": "q22_g", "label": "Streetwear.", "tags": ["streetwear", "urban", "fashion"]}
+      ]
+    },
+    {
+      "id": "q23",
+      "category": "digital_culture",
+      "prompt": "What kind of music usually finds its way into your playlists?",
+      "type": "multi_select",
+      "required": true,
+      "min_selections": 1,
+      "max_selections": 3,
+      "options": [
+        {"id": "q23_a", "label": "Indie and alternative.", "tags": ["indie", "alternative_music"]},
+        {"id": "q23_b", "label": "Pop.", "tags": ["pop_music"]},
+        {"id": "q23_c", "label": "Hip-hop and R&B.", "tags": ["hip_hop", "rnb"]},
+        {"id": "q23_d", "label": "Electronic.", "tags": ["electronic_music"]},
+        {"id": "q23_e", "label": "Classical and instrumental.", "tags": ["classical", "instrumental"]},
+        {"id": "q23_f", "label": "A bit of everything, depending on my mood.", "tags": ["eclectic_music"]}
+      ]
+    },
+    {
+      "id": "q24",
+      "category": "digital_culture",
+      "prompt": "Which statement feels closest to your current outlook?",
+      "type": "single_select",
+      "required": true,
+      "options": [
+        {"id": "q24_a", "label": "I want to experience everything.", "weights": {"exploration": 4, "spontaneity": 3}},
+        {"id": "q24_b", "label": "I want to understand everything.", "weights": {"curiosity": 4, "analytical_style": 4}},
+        {"id": "q24_c", "label": "I want to create something meaningful.", "weights": {"creativity": 4, "expressiveness": 3}},
+        {"id": "q24_d", "label": "I want to live an interesting story.", "weights": {"creativity": 3, "exploration": 4, "spontaneity": 3}},
+        {"id": "q24_e", "label": "I want to figure out what makes me happy.", "weights": {"reflection": 4, "curiosity": 2}}
+      ]
+    }
+  ]
+}

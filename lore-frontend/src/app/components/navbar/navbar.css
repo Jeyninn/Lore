@@ -1,0 +1,149 @@
+
+:host {
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+
+.navbar {
+  min-height: 76px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(16, 19, 15, 0.96);
+  border-bottom: 1px solid #343D31;
+  position: relative;
+}
+
+/* Brand */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #EAEDE4;
+  font-size: 22px;
+  font-weight: 850;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.brand span:last-child {
+  color: #C7F464;
+  font-family: 'Courier New', monospace;
+  font-size: 17px;
+}
+
+.brand-icon {
+  color: #C7F464;
+  margin-right: 10px;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.brand:hover .brand-icon {
+  transform: rotate(45deg);
+}
+
+/* Navigation links */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  position: relative;
+  color: #929B8C;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  background: #C7F464;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #C7F464;
+}
+
+.nav-links a:not(.nav-cta):hover::after,
+.nav-links a:not(.nav-cta).active::after {
+  width: 100%;
+}
+
+/* CTA */
+
+.nav-links .nav-cta,
+.nav-cta {
+  padding: 12px 19px;
+  border: 1px solid #C7F464;
+  border-radius: 4px;
+  background: #C7F464;
+  color: #10130F;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: all 0.25s ease;
+}
+
+.nav-cta:hover {
+  background: transparent;
+  color: #C7F464;
+  box-shadow: 0 0 18px #C7F46222;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .navbar {
+    padding: 16px 5%;
+    min-height: 76px;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+  }
+
+  .nav-links .nav-cta {
+    padding: 10px 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-links {
+    gap: 13px;
+  }
+}

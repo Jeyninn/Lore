@@ -1,0 +1,169 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* ==========================================
+   LORE.exe — GLOBAL CYBER DESIGN SYSTEM
+========================================== */
+
+:root {
+  --lore-bg: #10130F;
+  --lore-surface: #171B16;
+  --lore-surface-2: #20261E;
+  --lore-border: #343D31;
+
+  --lore-lime: #C7F464;
+  --lore-lime-dim: #9ECA49;
+  --lore-cyan: #69D9D0;
+
+  --lore-text: #EAEDE4;
+  --lore-muted: #929B8C;
+  --lore-danger: #E47C73;
+
+  --lore-font: 'Inter', sans-serif;
+  --lore-mono: 'Courier New', monospace;
+
+  --lore-radius: 5px;
+}
+
+/* Global reset */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--lore-bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background-color: var(--lore-bg);
+  color: var(--lore-text);
+
+  font-family: var(--lore-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Selection */
+
+::selection {
+  background: var(--lore-lime);
+  color: #10130F;
+}
+
+/* Typography */
+
+h1, h2, h3, h4 {
+  color: var(--lore-text);
+  font-family: var(--lore-font);
+  letter-spacing: -0.045em;
+}
+
+p {
+  color: var(--lore-muted);
+  line-height: 1.7;
+}
+
+code, pre {
+  font-family: var(--lore-mono);
+}
+
+/* Common buttons */
+
+button {
+  font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--lore-lime);
+  outline-offset: 3px;
+}
+
+/* Common form elements */
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #737D6D;
+}
+
+/* Reusable system labels */
+
+.section-label,
+.eyebrow {
+  color: var(--lore-lime);
+  font-family: var(--lore-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+/* Technical divider */
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--lore-border);
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--lore-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #48513F;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lore-lime-dim);
+}
+
+/* Subtle scanline utility */
+
+.lore-scanlines {
+  position: relative;
+}
+
+.lore-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(255,255,255,0.018) 4px
+  );
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
